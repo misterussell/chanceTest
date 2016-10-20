@@ -1,6 +1,6 @@
 // card constructor
 
-function PlayingCard (suit, value) {
+function PlayingCard(suit, value) {
   this.name = value + ' of ' + suit;
   this.suit = suit;
   this.value = value;
@@ -8,6 +8,66 @@ function PlayingCard (suit, value) {
 
 var card = new PlayingCard('spades', 'ace');
 // console.log(card);
+
+function Deck() {
+  'use strict';
+
+  //CREATE Deck
+  var suits = ['Hearts', 'Spades', 'Clubs', 'Diamonds'];
+  var cardValues = [2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 'Jack' , 'Queen' , 'King' , 'Ace'];
+  this.allCards = [];
+
+  for(var i = 0; i < suits.length; i++) {
+    for(var v = 0; v < cardValues.length; v++) {
+      this.allCards.push(new PlayingCard(suits[i], cardValues[v]));
+    }
+  }
+
+  //PICK random card
+  function getRandomCard (cards) {
+    var r = Math.random();
+    return Math.ceil(r * cards);
+  }
+
+  //SHUFFLE should grab a random card, move that to a new deck, then pick another++ until there are no new cards, it will then return it back as allCards so we can continue to use this for other functions
+  this.shuffle = function () {
+    var newOrder = [];
+    var i=0;
+    do {
+      var pickedCard = this.allCards[getRandomCard(this.allCards.length)];
+      var cardLocation = this.allCards.indexOf(pickedCard);
+      newOrder.push(this.allCards.splice(cardLocation, 1));
+    } while ( newOrder.length < 52);
+    // console.log(newOrder[0].concat(newOrder[1]));
+    var newDeck = newOrder.map(function(card, i, arr) {
+      return card[0];
+    });
+    // return newDeck;
+    this.allCards = newDeck;
+    return this.allCards;
+  };
+
+  //DRAW should take the top card and adjust allCards to only display what is left
+  this.draw = function () {
+    var topCard = this.allCards[0];
+    // console.log(topCard);
+    this.allCards.splice(topCard, 1);
+    return topCard;
+  };
+
+  // define other factors of what a deck is
+
+}
+
+var deck = new Deck();
+var deck2 = new Deck();
+console.log(deck2);
+console.log(deck.shuffle());
+console.log(deck.draw());
+console.log(deck.draw());
+console.log(deck.draw());
+console.log(deck.draw());
+
 
 // die constructor
 function randomNumber() {
@@ -59,27 +119,26 @@ function getProbabilities(die1, die2) {
     var sum = die1.roll() + die2.roll();
     rolls.push(sum);
     i++;
-  } while (i < 100);
+  } while (i < 1000);
 
-  console.log(rolls);
+  // console.log(rolls);
 
-  var counter = {};
-  var finalProbabilites = [];
+  var counter = [];
 	// go through one letter at a time
-	rolls.map(function(roll, i, arr) {
+	rolls.forEach(function(roll, i, arr) {
 		// if the sum is not in the counter
-		if (!counter[roll]) {
+		if (!counter[roll-2]) {
 			//write it down and give it value 1
-			counter[roll] = 1;
+			counter[roll-2] = 1;
 		} else {
 			// add 1 to its value
-			counter[roll] = counter[roll] + 1;
+			counter[roll-2] = counter[roll-2] + 1;
 		}
+    // return counter;
 	});
-
-  console.log(counter);
+  return counter;
 
 }
 
 var finalProbabilites = getProbabilities(die1, die2);
-console.log(finalProbabilites);
+// console.log(finalProbabilites);
