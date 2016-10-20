@@ -12,10 +12,29 @@ var card = new PlayingCard('spades', 'ace');
 function Deck() {
   'use strict';
 
+  var container = $('.container');
+
   //CREATE Deck
   var suits = ['Hearts', 'Spades', 'Clubs', 'Diamonds'];
   var cardValues = [2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 'Jack' , 'Queen' , 'King' , 'Ace'];
+
   this.allCards = [];
+
+  var suitImages = [
+    {
+      suit: 'Hearts',
+      image: 'images/heart.png'
+    },{
+      suit: 'Spades',
+      image: 'images/spade.png'
+    },{
+      suit: 'Clubs',
+      image: 'images/club.png'
+    },{
+      suit: 'Diamonds',
+      image: 'images/diamond.png'
+    }
+  ];
 
   for(var i = 0; i < suits.length; i++) {
     for(var v = 0; v < cardValues.length; v++) {
@@ -50,8 +69,17 @@ function Deck() {
   //DRAW should take the top card and adjust allCards to only display what is left
   this.draw = function () {
     var topCard = this.allCards[0];
+    var cardImage;
     // console.log(topCard);
     this.allCards.splice(topCard, 1);
+    // var $createCard = ('<li>' + topCard.value + ' of ' + topCard.suit + '</li>');
+    suitImages.forEach(function(image, i, arr) {
+      if (image.suit === topCard.suit) {
+        cardImage = image.image;
+      }
+    });
+    var $createCard = ('<li><h2>' + topCard.value + '</h2><img src=" ' + cardImage + '" /img>' + '</li>');
+    container.append($createCard);
     return topCard;
   };
 
@@ -61,12 +89,11 @@ function Deck() {
 
 var deck = new Deck();
 var deck2 = new Deck();
+var container = $('.container');
 console.log(deck2);
 console.log(deck.shuffle());
 console.log(deck.draw());
-console.log(deck.draw());
-console.log(deck.draw());
-console.log(deck.draw());
+// container.append(deck.draw());
 
 
 // die constructor
