@@ -1,5 +1,6 @@
-// card constructor
+// max-cards.
 
+// card constructor
 function PlayingCard(suit, value) {
   this.name = value + ' of ' + suit;
   this.suit = suit;
@@ -84,20 +85,44 @@ function Deck() {
   };
 
   // define other factors of what a deck is
+  // bottom of deck
+  // game - defines a constructor for game that sets up a the flow for different game methods
+  // hand - different paramaters for different games
+  // burn - discard pile for each time a new hand is dealt
 
 }
 
-var deck = new Deck();
-var deck2 = new Deck();
 var container = $('.container');
-console.log(deck2);
-console.log(deck.shuffle());
-console.log(deck.draw());
-console.log(deck.draw());
-// container.append(deck.draw());
+var shuffleButton = $('.shuffle');
+var deal = $('.deal');
+var drawButton = $('.draw');
 
+//LOADS initial unshuffled deck
+var deck = new Deck();
+//SHUFFLES initial deck, should user forget to (failsafe)
+for(var i = 0; i<10 ; i++) {deck.shuffle();}
 
-// die constructor
+shuffleButton.on('click', function() {
+  console.log('click');
+  deck.shuffle();
+  return deck.shuffle();
+});
+
+drawButton.on('click', function() {
+  return deck.draw();
+});
+
+deal.on('click', function() {
+  container.empty();
+  deck.shuffle();
+});
+
+//PROOFS for Deck constructor
+// var deck2 = new Deck();
+// console.log(deck2);
+// container.append(deck.draw())
+
+// DIE constructor
 function randomNumber() {
   var r = Math.random();
   return Math.ceil(r*6);
@@ -169,4 +194,4 @@ function getProbabilities(die1, die2) {
 }
 
 var finalProbabilites = getProbabilities(die1, die2);
-// console.log(finalProbabilites);
+console.log(finalProbabilites);

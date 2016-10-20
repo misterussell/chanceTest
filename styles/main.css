@@ -17,7 +17,7 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto; }
@@ -35,8 +35,8 @@ li {
   position: relative;
   float: left;
   display: block;
-  margin-right: 5.85151%;
-  width: 15.31879%; }
+  margin-right: 2.35765%;
+  width: 14.70196%; }
   li:last-child {
     margin-right: 0; }
   li:nth-child(5n) {
@@ -46,11 +46,11 @@ li {
 
 h2 {
   color: white;
-  font-size: 1.5rem;
+  font-size: .35rem;
   position: absolute;
-  top: 30%;
+  top: 25%;
   left: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-20%);
   transform: translateX(-50%);
   z-index: 1; }
 
@@ -62,5 +62,26 @@ img {
   transform: translateX(-50%);
   transform: translateY(-50%);
   /*height: 80%;*/ }
+
+@media (min-width: 500px) {
+  h2 {
+    color: white;
+    font-size: 1rem;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateY(-25%);
+    transform: translateX(-50%);
+    z-index: 1; } }
+@media (min-width: 900px) {
+  h2 {
+    color: white;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+    z-index: 1; } }
 
 /*# sourceMappingURL=main.css.map */
