@@ -93,6 +93,7 @@ var container = $('.container');
 console.log(deck2);
 console.log(deck.shuffle());
 console.log(deck.draw());
+console.log(deck.draw());
 // container.append(deck.draw());
 
 

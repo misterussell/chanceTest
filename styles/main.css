@@ -1,0 +1,66 @@
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+body {
+  text-align: center;
+  font-size: 62.5%;
+  font-family: 'Fredoka One', cursive; }
+
+img {
+  width: 80%;
+  /*height: 80%;*/ }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto; }
+  ul::after {
+    clear: both;
+    content: "";
+    display: block; }
+
+li {
+  display: block;
+  height: 15vw;
+  margin: 1rem;
+  border: solid 1px #8a8a8a;
+  border-radius: 1rem;
+  position: relative;
+  float: left;
+  display: block;
+  margin-right: 5.85151%;
+  width: 15.31879%; }
+  li:last-child {
+    margin-right: 0; }
+  li:nth-child(5n) {
+    margin-right: 0; }
+  li:nth-child(5n+1) {
+    clear: left; }
+
+h2 {
+  color: white;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+  z-index: 1; }
+
+img {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+  /*height: 80%;*/ }
+
+/*# sourceMappingURL=main.css.map */
